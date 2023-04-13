@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/atgreen/simple-scaler/actions/workflows/build.yml/badge.svg)](https://github.com/atgreen/simple-nodeport-service/actions)
+[![Build Status](https://github.com/atgreen/simple-nodeport-service/actions/workflows/build.yml/badge.svg)](https://github.com/atgreen/simple-nodeport-service/actions)
 
 # simple-nodeport-service
 
