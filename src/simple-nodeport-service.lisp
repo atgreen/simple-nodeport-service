@@ -86,7 +86,9 @@ spec:
   selector:
     name: notebook-~A
 " port port port target))
-      (run-with-retry "bash -c 'KUBECONFIG=/etc/simple-nodeport-service/kubeconfig oc create -f ~A" svcfile))))
+      (run-with-retry "bash -c 'KUBECONFIG=/etc/simple-nodeport-service/kubeconfig oc create -f ~A" svcfile)
+      (format nil "~A" port))))
+
 
 ;; ----------------------------------------------------------------------------
 ;; HTTP server control
