@@ -1,0 +1,105 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-nodeport-service-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-nodeport-service-1
+  template:
+    metadata:
+      labels:
+        app: simple-nodeport-service-1
+    spec:
+      containers:
+      - name: simple-nodeport-service
+        image: quay.io/atgreen/simple-nodeport-service:latest
+        volumeMounts:
+        - name: simple-nodeport-service-config
+          mountPath: /etc/simple-nodeport-service/
+        - name: ss1-data
+          mountPath: /var/lib/simple-nodeport-service/
+      volumes:
+      - name: simple-nodeport-service-config
+        configMap:
+          name: simple-nodeport-service-config-1
+          items:
+            - key: config.ini
+              path: config.ini
+            - key: kubeconfig
+              path: kubeconfig
+      - name: ss1-data
+        persistentVolumeClaim:
+          claimName: ss1-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-nodeport-service-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-nodeport-service-2
+  template:
+    metadata:
+      labels:
+        app: simple-nodeport-service-2
+    spec:
+      containers:
+      - name: simple-nodeport-service
+        image: quay.io/atgreen/simple-nodeport-service:latest
+        volumeMounts:
+        - name: simple-nodeport-service-config
+          mountPath: /etc/simple-nodeport-service/
+        - name: ss2-data
+          mountPath: /var/lib/simple-nodeport-service/
+      volumes:
+      - name: simple-nodeport-service-config
+        configMap:
+          name: simple-nodeport-service-config-2
+          items:
+            - key: config.ini
+              path: config.ini
+            - key: kubeconfig
+              path: kubeconfig
+      - name: ss2-data
+        persistentVolumeClaim:
+          claimName: ss2-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-nodeport-service-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-nodeport-service-3
+  template:
+    metadata:
+      labels:
+        app: simple-nodeport-service-3
+    spec:
+      containers:
+      - name: simple-nodeport-service
+        image: quay.io/atgreen/simple-nodeport-service:latest
+        volumeMounts:
+        - name: simple-nodeport-service-config
+          mountPath: /etc/simple-nodeport-service/
+        - name: ss3-data
+          mountPath: /var/lib/simple-nodeport-service/
+      volumes:
+      - name: simple-nodeport-service-config
+        configMap:
+          name: simple-nodeport-service-config-3
+          items:
+            - key: config.ini
+              path: config.ini
+            - key: kubeconfig
+              path: kubeconfig
+      - name: ss3-data
+        persistentVolumeClaim:
+          claimName: ss3-data
