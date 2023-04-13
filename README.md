@@ -12,11 +12,11 @@ simple-nodeport-service expects to find a kubeconfig file at `/etc/simple-nodepo
 simple-nodeport-service is customized through a [TOML](https://toml.io)
 formatted configuration file, `/etc/simple-nodeport-service/config.ini`.
 
-| Setting         | Description                                            |
-|-----------------+--------------------------------------------------------|
-| `server-port`   | The port this service will listen to                   |
-| `min-port`      | The minimum port number in the range of nodeport ports |
-| `max-port`      | The maximum port number in the range of nodeport ports |
+| Setting       | Description                                            |
+|---------------+--------------------------------------------------------|
+| `server-port` | The port this service will listen to                   |
+| `min-port`    | The minimum port number in the range of nodeport ports |
+| `max-port`    | The maximum port number in the range of nodeport ports |
 
 simple-nodeport-service runs on top of an embedded [etcd](https://etcd.io/)
 database that runs as an asynchronous child process to simple-nodeport-service
@@ -27,7 +27,7 @@ or five nodes, is configured in the `[etcd]` section of
 `/etc/simple-nodeport-service/config.ini`.
 
 | Setting                       | Description                                    |
-|-------------------------------|------------------------------------------------  |
+|-------------------------------+------------------------------------------------|
 | `name`                        | The name of this etcd node                     |
 | `debug-trace`                 | Any value enables logging of all etcd messages |
 | `data-dir`                    | Path to persistent storage                     |
